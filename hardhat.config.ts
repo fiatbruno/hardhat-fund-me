@@ -4,9 +4,8 @@ import "@nomicfoundation/hardhat-toolbox"
 // import "@nomiclabs/hardhat-etherscan"
 // import "@nomiclabs/hardhat-ethers"
 // import "hardhat-gas-reporter"
-// import "dotenv/config"
-// import "hardhat-deploy"
-// import "solidity-coverage"
+// import "dotenv/config" 
+import "hardhat-deploy"
 import { HardhatUserConfig } from "hardhat/config"
 
 // You need to export an object to set up your config
