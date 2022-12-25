@@ -1,7 +1,6 @@
 import "@nomicfoundation/hardhat-toolbox"
 import { hardhatArguments } from "hardhat"
 import "@typechain/hardhat"
-import "@nomiclabs/hardhat-waffle"
 import "@nomiclabs/hardhat-etherscan"
 import "@nomiclabs/hardhat-ethers"
 import "hardhat-gas-reporter"
@@ -55,7 +54,7 @@ const config: HardhatUserConfig = {
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
-        // coinmarketcap: COINMARKETCAP_API_KEY,
+        coinmarketcap: COINMARKETCAP_API_KEY,
     },
     namedAccounts: {
         deployer: {
