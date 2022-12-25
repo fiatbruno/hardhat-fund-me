@@ -1,5 +1,0 @@
-linting
-using @chain/contracts from npm
-deploying (overwritting shit)
-mocking and refactoring fundme contract
-utils
