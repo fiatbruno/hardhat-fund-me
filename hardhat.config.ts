@@ -1,10 +1,11 @@
 import "@nomicfoundation/hardhat-toolbox"
+import { hardhatArguments } from "hardhat"
 // import "@typechain/hardhat"
 // import "@nomiclabs/hardhat-waffle"
 // import "@nomiclabs/hardhat-etherscan"
 // import "@nomiclabs/hardhat-ethers"
 // import "hardhat-gas-reporter"
-// import "dotenv/config" 
+// import "dotenv/config"
 import "hardhat-deploy"
 import { HardhatUserConfig } from "hardhat/config"
 
@@ -15,8 +16,8 @@ import { HardhatUserConfig } from "hardhat/config"
  */
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
-const KOVAN_RPC_URL =
-    process.env.KOVAN_RPC_URL ||
+const GOERLI_RPC_URL =
+    process.env.GOERLI_RPC_URL ||
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const PRIVATE_KEY =
     process.env.PRIVATE_KEY ||
@@ -30,8 +31,8 @@ const config: HardhatUserConfig = {
             chainId: 31337,
             // gasPrice: 130000000000,
         },
-        kovan: {
-            url: KOVAN_RPC_URL,
+        goerli: {
+            url: GOERLI_RPC_URL,
             accounts: [PRIVATE_KEY],
             chainId: 42,
         },

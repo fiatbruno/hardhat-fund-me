@@ -32,6 +32,7 @@ export interface FundMeInterface extends utils.Interface {
     "funders(uint256)": FunctionFragment;
     "getVersion()": FunctionFragment;
     "iOwner()": FunctionFragment;
+    "priceFeed()": FunctionFragment;
     "withdraw()": FunctionFragment;
   };
 
@@ -43,6 +44,7 @@ export interface FundMeInterface extends utils.Interface {
       | "funders"
       | "getVersion"
       | "iOwner"
+      | "priceFeed"
       | "withdraw"
   ): FunctionFragment;
 
@@ -64,6 +66,7 @@ export interface FundMeInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "iOwner", values?: undefined): string;
+  encodeFunctionData(functionFragment: "priceFeed", values?: undefined): string;
   encodeFunctionData(functionFragment: "withdraw", values?: undefined): string;
 
   decodeFunctionResult(
@@ -78,6 +81,7 @@ export interface FundMeInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "funders", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getVersion", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "iOwner", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "priceFeed", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 
   events: {};
@@ -130,6 +134,8 @@ export interface FundMe extends BaseContract {
 
     iOwner(overrides?: CallOverrides): Promise<[string]>;
 
+    priceFeed(overrides?: CallOverrides): Promise<[string]>;
+
     withdraw(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -155,6 +161,8 @@ export interface FundMe extends BaseContract {
 
   iOwner(overrides?: CallOverrides): Promise<string>;
 
+  priceFeed(overrides?: CallOverrides): Promise<string>;
+
   withdraw(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -177,6 +185,8 @@ export interface FundMe extends BaseContract {
     getVersion(overrides?: CallOverrides): Promise<BigNumber>;
 
     iOwner(overrides?: CallOverrides): Promise<string>;
+
+    priceFeed(overrides?: CallOverrides): Promise<string>;
 
     withdraw(overrides?: CallOverrides): Promise<void>;
   };
@@ -204,6 +214,8 @@ export interface FundMe extends BaseContract {
 
     iOwner(overrides?: CallOverrides): Promise<BigNumber>;
 
+    priceFeed(overrides?: CallOverrides): Promise<BigNumber>;
+
     withdraw(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -229,6 +241,8 @@ export interface FundMe extends BaseContract {
     getVersion(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     iOwner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    priceFeed(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     withdraw(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
