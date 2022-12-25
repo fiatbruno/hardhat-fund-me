@@ -4,7 +4,12 @@ import "@typechain/hardhat"
 import "@nomiclabs/hardhat-etherscan"
 import "@nomiclabs/hardhat-ethers"
 import "hardhat-gas-reporter"
-import "dotenv/config"
+import * as dotenv from "dotenv"
+dotenv.config({
+    path: "/Users/fiat/Developer/learn-solidity/hardhat-fund-me/.env",
+})
+// import "dotenv/config"
+// import config from "dotenv"
 import "hardhat-deploy"
 import { HardhatUserConfig } from "hardhat/config"
 
