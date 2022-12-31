@@ -57,11 +57,11 @@ contract FundMe {
         fund();
     }
 
-
     fallback() external payable {
         fund();
     }
 
+    /** @notice This function funds this contract  */
     function fund() public payable {
         require(
             msg.value.getConversionRate(priceFeed) >= MINIMUM_USD,
