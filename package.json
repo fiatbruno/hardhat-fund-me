@@ -1,4 +1,7 @@
 {
+
+  "name": "hardhat-fund-me",
+  "author": "Fiat Bruno",
   "devDependencies": {
     "@chainlink/contracts": "^0.5.1",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
@@ -10,5 +13,12 @@
     "hardhat-deploy": "^0.11.22",
     "hardhat-shorthand": "^1.0.0",
     "solhint": "^3.3.7"
+  },
+  "scripts": {
+    "test": "npx hardhat test --network goerli",
+    "lint": "npx solhit 'contarcts/*.sol",
+    "lint:fix": "npx solhint 'contarcts/*.sol' --fix",
+    "format": "npx prettier --write .",
+    "coverage": "npx hardhat coverage"
   }
 }

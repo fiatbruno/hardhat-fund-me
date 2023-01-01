@@ -9,8 +9,6 @@ import "./PriceConverter.sol";
 
 //Error Codes
 error FundMe__NotOwner();
-error FundMe__NotEnoughETHSent();
-error FundMe__CallFailed();
 
 //Interfaces -> Libraries -> Contracts
 
@@ -65,11 +63,10 @@ contract FundMe {
 
     /** @notice This function funds this contract  */
     function fund() public payable {
-        // require(
-        //     msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD,
-        //     "You need to spend more ETH!"
-        // );
-        if (!(msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD)) revert FundMe__NotEnoughETHSent();
+        require(
+            msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD,
+            "You need to spend more ETH!"
+        );
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         s_addressToAmountFunded[msg.sender] += msg.value;
         s_funders.push(msg.sender);
@@ -94,8 +91,7 @@ contract FundMe {
         (bool callSuccess, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
-        // require(callSuccess, "Call failed");
-        if(callSuccess) revert FundMe__CallFailed();
+        require(callSuccess, "Call failed");
     }
 
     function cheaperWithdraw() public onlyOwner {
@@ -112,8 +108,7 @@ contract FundMe {
         (bool callSuccess, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
-        // require(callSuccess, "Call failed");
-        if(callSuccess) revert FundMe__CallFailed();
+        require(callSuccess, "Call failed");
     }
 
     function getOwner() public view returns (address) {
