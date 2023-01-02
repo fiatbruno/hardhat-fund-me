@@ -12,6 +12,9 @@ describe("FundMe", async () => {
     const sendValue: BigNumber = ethers.utils.parseEther("1")
 
     beforeEach(async () => {
+        if (!developmentChains.includes(network.name)) {
+            throw "You need to be on a development chain to run tests"
+        }
         const accounts = await ethers.getSigners()
         deployer = accounts[0]
 
