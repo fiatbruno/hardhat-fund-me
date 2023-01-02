@@ -9,7 +9,7 @@ developmentChains.includes(network.name)
     : describe("FundMe", async () => {
           let fundMe: FundMe
           let deployer: SignerWithAddress
-          const sendValue = ethers.utils.parseEther("1")
+          const sendValue = ethers.utils.parseEther("0.1")
           beforeEach(async () => {
               const accounts = await ethers.getSigners()
               deployer = accounts[0]

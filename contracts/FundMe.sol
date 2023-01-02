@@ -53,19 +53,19 @@ contract FundMe {
         s_priceFeed = AggregatorV3Interface(priceFeedAddress);
     }
 
-    receive() external payable {
-        fund();
-    }
+    // receive() external payable {
+    //     fund();
+    // }
 
-    fallback() external payable {
-        fund();
-    }
+    // fallback() external payable {
+    //     fund();
+    // }
 
     /** @notice This function funds this contract  */
     function fund() public payable {
         require(
             msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD,
-            "You need to spend more ETH!"
+            "You need to send more ETH!"
         );
         // require(PriceConverter.getConversionRate(msg.value) >= MINIMUM_USD, "You need to spend more ETH!");
         s_addressToAmountFunded[msg.sender] += msg.value;
@@ -124,7 +124,8 @@ contract FundMe {
     ) public view returns (uint256) {
         return s_addressToAmountFunded[funder];
     }
-    function getPriceFeed() public view returns(AggregatorV3Interface){
+
+    function getPriceFeed() public view returns (AggregatorV3Interface) {
         return s_priceFeed;
     }
     // Explainer from: https://solidity-by-example.org/fallback/
